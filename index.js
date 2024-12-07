@@ -1,17 +1,19 @@
 const { spawn } = require('node:child_process');
 const http = require('node:http');
 var path = require('path')
+const fs = require('fs');
+
 
 
 const express = require("express")
 var app = express()
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, "js")));
-
+const temperatures = []; // Store readings
 
 app.get("/",function(request,response){
     
-    const temperatures = []; // Store readings
+    
     debugger;
     const sensor = spawn('python', ['sensor.py']);
     sensor.stdout.on('data', function(data) {
@@ -25,7 +27,7 @@ app.get("/",function(request,response){
 
     
 // response.send("Hello World!")
-response.sendFile('C://WebApps/testnode/index.html');
+response.sendFile('C://FULLSTACK/Front&Express/ExpressApp/index.html');
 })
 
 
@@ -36,29 +38,12 @@ console.log("Started application on port %d", 10000)
 
 function loadData(temperatures)
 {
-  console.log('adadadadada')
-//   let tableBody = document.querySelector('#dataTable'); 
-
-//   //access data tru API
-//   let rowData2 = [
-//     { name: 'John Doe', age: 28, location: 'New York' },
-//     { name: 'Jane Smith', age: 34, location: 'Los Angeles' },
-//     { name: 'Mike Johnson', age: 40, location: 'Chicago' }
-//   ];
-
-//   rowData2.forEach(row => {
-//     const tr = document.createElement('tr');
-
-//     Object.values(row).forEach(value => {
-//       const td = document.createElement('td');
-//       td.textContent = value;
-//       //td.onclick = () => {openPanelLocal(0)}
-//       tr.appendChild(td);
-//     });
-
-//     tableBody.appendChild(tr);
-//   });
+  console.log('saving data from node')
 }   
+
+module.exports.add = function pyData() {
+  return temperatures;
+}
 
 
 

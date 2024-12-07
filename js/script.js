@@ -1,4 +1,6 @@
-console.log('lolololol')
+import { a } from './mymodule.js';
+
+console.log(a)
 
 // document.onreadystatechange = function () {
 //   if (document.readyState !== 'loading') {
