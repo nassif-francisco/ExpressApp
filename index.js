@@ -2,6 +2,8 @@ const { spawn } = require('node:child_process');
 const http = require('node:http');
 var path = require('path')
 const fs = require('fs');
+var jsdom = require('jsdom');
+$ = require('jquery')(new jsdom.JSDOM().window);
 
 
 
@@ -9,6 +11,7 @@ const express = require("express")
 var app = express()
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, "js")));
+app.use(express.static(path.join(__dirname, 'public')));
 const temperatures = []; // Store readings
 
 app.get("/",function(request,response){
@@ -39,7 +42,7 @@ console.log("Started application on port %d", 10000)
 function loadData()
 {
   console.log('saving data from node')
-  fs.writeFile("C://FULLSTACK/Front&Express/ExpressApp/tmp/test.txt", temperatures[0].toString(), function(err) {
+  fs.writeFile("C://FULLSTACK/Front&Express/ExpressApp/js/test.txt", temperatures[0].toString(), function(err) {
     if(err) {
         return console.log(err);
     }
@@ -50,6 +53,11 @@ function loadData()
 module.exports.add = function pyData() {
   return temperatures;
 }
+
+//$(loadDataTable);
+
+
+
 
 
 
