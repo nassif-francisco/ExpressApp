@@ -36,9 +36,15 @@ console.log("Started application on port %d", 10000)
 });
 
 
-function loadData(temperatures)
+function loadData()
 {
   console.log('saving data from node')
+  fs.writeFile("C://FULLSTACK/Front&Express/ExpressApp/tmp/test.txt", temperatures[0].toString(), function(err) {
+    if(err) {
+        return console.log(err);
+    }
+    console.log("The file was saved!");
+}); 
 }   
 
 module.exports.add = function pyData() {
