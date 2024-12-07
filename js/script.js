@@ -1,16 +1,21 @@
 console.log('lolololol')
 
-document.onreadystatechange = function () {
-  if (document.readyState !== 'loading') {
-    // Execute code here
-    console.log("DOM fully loaded and parsed");
-    loadData();
-  }
-}
+// document.onreadystatechange = function () {
+//   if (document.readyState !== 'loading') {
+//     // Execute code here
+//     console.log("DOM fully loaded and parsed");
+//     loadData();
+//   }
+// }
+
+document.addEventListener("DOMContentLoaded", function(event) { 
+  console.log("DOM fully loaded and parsed");
+  loadData();
+});
 
 function loadData()
 {
-  console.log('adadadadada')
+  console.log('executing LoadData')
   let tableBody = document.querySelector('#dataTable'); 
 
   //access data tru API
