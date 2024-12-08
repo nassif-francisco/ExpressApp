@@ -97,8 +97,10 @@ function loadData()
 // }
 
 $(document).ready(function() {
-  $('.get-button').click(function() {
-      alert('Button clicked!');
+  $('.get-button').click(function() 
+  {
+
+      //alert('Button clicked!');
   });
 });
   

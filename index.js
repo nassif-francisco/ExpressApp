@@ -13,43 +13,50 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, "js")));
 app.use(express.static(path.join(__dirname, 'public')));
 const temperatures = []; // Store readings
+let pyData;
 
-app.get("/",function(request,response){
-    
-    
-    debugger;
-    const sensor = spawn('python', ['sensor.py']);
-    sensor.stdout.on('data', function(data) {
-    
-        // convert Buffer object to Float
-        temperatures.push(parseFloat(data));
-        //console.log(temperatures);
-        loadData();
-    });
-    
-
-    
+app.get("/",function(request,response){  
 // response.send("Hello World!")
 response.sendFile('C://FULLSTACK/Front&Express/ExpressApp/indexBase.html');
 })
 
-app.get("/home",function(request,response){
+app.get("/data",function(request,response){
     
     
   debugger;
+  console.log('lololo')
   const sensor = spawn('python', ['sensor.py']);
   sensor.stdout.on('data', function(data) {
   
       // convert Buffer object to Float
-      temperatures.push(parseFloat(data));
+
+      pyData = {name: "John", age: 30, location: "Caracas"}
+      console.log(pyData)
+
+      response.send(pyData);
+
+      //parse pyData
+      // const message = `${data}` ;
+      // console.log(message);
+
+
+      // console.log('logging data')
+      // console.log((data.toString()))
+      // const parseString = ''
+      // const newJson = JSON.parse(JSON.stringify(data.toString()))
+      //console.log(newJson.name);
       //console.log(temperatures);
-      loadData();
+      //loadData();
   });
   
 
   
-// response.send("Hello World!")
-response.sendFile('C://FULLSTACK/Front&Express/ExpressApp/index.html');
+
+//response.sendFile('C://FULLSTACK/Front&Express/ExpressApp/index.html');
+})
+
+app.get("/dataUI",function(request,response){
+response.sendFile('C://FULLSTACK/Front&Express/ExpressApp/index.html');  
 })
 
 

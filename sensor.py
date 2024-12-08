@@ -1,7 +1,14 @@
 # sensor.py
 
 import random, time
-while True:
-    time.sleep(random.random() * 5)  # wait 0 to 5 seconds
-    temperature = (random.random() * 20) - 5  # -5 to 15
-    print(temperature, flush=True, end='')
+
+data = {
+        "name": "John",
+        "age": 30,
+        "city": "New York",
+        "hobbies": ["reading", "traveling", "coding"]
+}
+
+time.sleep(2)  # wait 2 seconds
+# Example usage
+print(data)
