@@ -99,8 +99,26 @@ function loadData()
 $(document).ready(function() {
   $('.get-button').click(function() 
   {
-
+    let pyResponse;
+    $.ajax({
+      url: '/data',          // The endpoint you are calling
+      type: 'GET',
+      async: false,           // HTTP method: GET, POST, PUT, DELETE, etc.
+      dataType: 'json',      // Expected response type
+      success: function(response) {
+          // Handle success
+          console.log('Success:', response);
+          pyResponse = response;
+      },
+      error: function(xhr, status, error) {
+          // Handle error
+          console.error('Error:', error);
+      }
+    });
+    console.log(pyResponse)
+    $('.big-textbox').val(`${pyResponse.name}`);
       //alert('Button clicked!');
   });
+  
 });
   
