@@ -24,20 +24,23 @@ app.get("/data",function(request,response){
     
     
   debugger;
-  console.log('lololo')
   const sensor = spawn('python', ['sensor.py']);
   sensor.stdout.on('data', function(data) {
   
       // convert Buffer object to Float
 
-      pyData = {name: "John", age: 30, location: "Caracas"}
-      console.log(pyData)
+      const message = `${data}` ;
+      //console.log(message);
+      //console.log(data.toString())
+      // console.log(newString);
 
-      response.send(pyData);
+      //YOU HAVE TO SEND THE RESPONSE HERE
+      //response.send(JSON.stringify(data.toString()));
 
-      //parse pyData
-      // const message = `${data}` ;
-      // console.log(message);
+      //response.send(JSON.stringify(data.toString()));
+
+      response.send(JSON.parse(data));
+
 
 
       // console.log('logging data')
