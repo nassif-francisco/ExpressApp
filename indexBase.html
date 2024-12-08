@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generic Web Page</title>
+    <!-- <link rel="stylesheet" href="/public/styles.css"> Link to an external CSS file -->
+    <!-- <link rel="stylesheet" type="text/css" href="/public/styles.css" /> -->
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- https://stackoverflow.com/questions/38757235/express-how-to-send-html-together-with-css-using-sendfile -->
+     <script type="module" src="script.js"></script>
+    
+    <title>Base screen</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+        }
+        .big-textbox {
+            width: 80%;
+            height: 150px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+        .get-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .get-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <textarea class="big-textbox" placeholder="Enter your text here..."></textarea><br>
+        <button class="get-button">GET</button>
+    </div>
+</body>
+</html>

@@ -95,4 +95,10 @@ function loadData()
 
 //   console.log($('#dataTable tr').html())
 // }
+
+$(document).ready(function() {
+  $('.get-button').click(function() {
+      alert('Button clicked!');
+  });
+});
   

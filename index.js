@@ -30,6 +30,25 @@ app.get("/",function(request,response){
 
     
 // response.send("Hello World!")
+response.sendFile('C://FULLSTACK/Front&Express/ExpressApp/indexBase.html');
+})
+
+app.get("/home",function(request,response){
+    
+    
+  debugger;
+  const sensor = spawn('python', ['sensor.py']);
+  sensor.stdout.on('data', function(data) {
+  
+      // convert Buffer object to Float
+      temperatures.push(parseFloat(data));
+      //console.log(temperatures);
+      loadData();
+  });
+  
+
+  
+// response.send("Hello World!")
 response.sendFile('C://FULLSTACK/Front&Express/ExpressApp/index.html');
 })
 
@@ -41,6 +60,7 @@ console.log("Started application on port %d", 10000)
 
 function loadData()
 {
+  
   console.log('saving data from node')
   fs.writeFile("C://FULLSTACK/Front&Express/ExpressApp/js/test.txt", temperatures[0].toString(), function(err) {
     if(err) {
