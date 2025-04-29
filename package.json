@@ -8,10 +8,18 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "express": "^4.21.2",
     "jquery": "^3.6.0",
     "jsdom": "^25.0.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nassif-francisco/ExpressApp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nassif-francisco/ExpressApp/issues"
+  },
+  "homepage": "https://github.com/nassif-francisco/ExpressApp#readme",
+  "description": ""
 }

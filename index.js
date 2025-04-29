@@ -21,41 +21,20 @@ response.sendFile('C://FULLSTACK/Front&Express/ExpressApp/indexBase.html');
 })
 
 app.get("/data",function(request,response){
-    
-    
-  debugger;
-  const sensor = spawn('python', ['sensor.py']);
+  const sensor = spawn('python', ['BACKEND/sensor.py']);
   sensor.stdout.on('data', function(data) {
-  
-      // convert Buffer object to Float
-
       const message = `${data}` ;
-      //console.log(message);
-      //console.log(data.toString())
-      // console.log(newString);
-
-      //YOU HAVE TO SEND THE RESPONSE HERE
-      //response.send(JSON.stringify(data.toString()));
-
-      //response.send(JSON.stringify(data.toString()));
-
       response.send(JSON.parse(data));
-
-
-
-      // console.log('logging data')
-      // console.log((data.toString()))
-      // const parseString = ''
-      // const newJson = JSON.parse(JSON.stringify(data.toString()))
-      //console.log(newJson.name);
-      //console.log(temperatures);
-      //loadData();
   });
-  
+})
 
-  
 
-//response.sendFile('C://FULLSTACK/Front&Express/ExpressApp/index.html');
+app.get("/groupData",function(request,response){
+  const sensor = spawn('python', ['BACKEND/groupData.py']);
+  sensor.stdout.on('data', function(data) {
+      const message = `${data}` ;
+      response.send(JSON.parse(data));
+  });
 })
 
 app.get("/dataUI",function(request,response){

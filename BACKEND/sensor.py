@@ -9,6 +9,6 @@ data = {
         "city": "New York",
         "hobbies": ["rea", "trav", "cod"]}
 
-time.sleep(2)  # wait 2 seconds
+#time.sleep(2)  # wait 2 seconds
 # Example usage
 print(json.dumps(data))

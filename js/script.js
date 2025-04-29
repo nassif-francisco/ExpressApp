@@ -15,6 +15,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
   loadData();
 });
 
+async function getGroupData() {
+  try {
+    const response = await $.ajax({
+      url: '/groupData',
+      type: 'GET',
+      dataType: 'json'
+    });
+    console.log('Success:', response);
+    return response;
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
 function loadData()
 {
   console.log('executing LoadData')
@@ -29,24 +43,27 @@ function loadData()
   .catch((e) => console.error(e));
 
   //access data tru API
-  let rowData2 = [
-    { name: 'John Doe', age: 28, location: 'New York' },
-    { name: 'Jane Smith', age: 34, location: 'Los Angeles' },
-    { name: 'Mike Johnson', age: 40, location: 'Chicago' }
-  ];
-
-  rowData2.forEach(row => {
-    const tr = document.createElement('tr');
-
-    Object.values(row).forEach(value => {
-      const td = document.createElement('td');
-      td.textContent = value;
-      //td.onclick = () => {openPanelLocal(0)}
-      tr.appendChild(td);
+  // let rowData2 = [
+  //   { name: 'John Doe', age: 28, location: 'New York' },
+  //   { name: 'Jane Smith', age: 34, location: 'Los Angeles' },
+  //   { name: 'Mike Johnson', age: 40, location: 'Chicago' }
+  // ];
+  (async () => {
+    const rowData2 = await getGroupData();
+    console.log('rowData2:', rowData2);
+    rowData2.forEach(row => {
+      const tr = document.createElement('tr');
+  
+      Object.values(row).forEach(value => {
+        const td = document.createElement('td');
+        td.textContent = value;
+        //td.onclick = () => {openPanelLocal(0)}
+        tr.appendChild(td);
+      });
+  
+      tableBody.appendChild(tr);
     });
-
-    tableBody.appendChild(tr);
-  });
+  })();
 }   
 
 // function loadDataTable() {
